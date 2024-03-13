@@ -34,6 +34,12 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
 
+lsp = require "lspconfig"
+lsp.clangd.setup {}
+lsp.lua_ls.setup {}
+
+vim.diagnostic.config{update_in_insert = true}
+
 vim.schedule(function()
   require "mappings"
 end)
