@@ -25,6 +25,10 @@ require("lazy").setup({
     end,
   },
 
+  {
+    "lukas-reineke/lsp-format.nvim"
+  },
+
   { import = "plugins" },
 }, lazy_config)
 
@@ -34,6 +38,22 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
 
+local lspfmt = require "lsp-format"
+local lsp = require "lspconfig"
+
+lspfmt.setup {}
+lsp.clangd.setup {on_attach = lspfmt.on_attach}
+lsp.rust_analyzer.setup {}
+
+vim.diagnostic.config {update_in_insert = true}
+
 vim.schedule(function()
   require "mappings"
 end)
+
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = false
+
+vim.keymap.set("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>")
