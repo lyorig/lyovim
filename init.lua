@@ -44,7 +44,11 @@ local lsp = require "lspconfig"
 lspfmt.setup {}
 lsp.clangd.setup {on_attach = lspfmt.on_attach}
 lsp.rust_analyzer.setup {}
-
+lsp.pyright.setup {on_attach = lspfmt.on_attach, update_in_insert = true}
+lsp.html.setup {
+	on_attach = lspfmt.on_attach
+}
+lsp.eslint.setup {}
 vim.diagnostic.config {update_in_insert = true}
 
 vim.schedule(function()
@@ -55,6 +59,5 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = false
-vim.opt.wrap = false
 
 vim.keymap.set("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>")
