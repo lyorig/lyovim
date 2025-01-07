@@ -29,6 +29,10 @@ require("lazy").setup({
     "lukas-reineke/lsp-format.nvim"
   },
 
+  {
+		"andweeb/presence.nvim"
+  },
+
   { import = "plugins" },
 }, lazy_config)
 
@@ -39,9 +43,10 @@ dofile(vim.g.base46_cache .. "statusline")
 require "nvchad.autocmds"
 
 local lspfmt = require "lsp-format"
+lspfmt.setup {}
+
 local lsp = require "lspconfig"
 
-lspfmt.setup {}
 lsp.clangd.setup {on_attach = lspfmt.on_attach}
 lsp.rust_analyzer.setup {}
 lsp.pyright.setup {on_attach = lspfmt.on_attach, update_in_insert = true}
@@ -49,6 +54,14 @@ lsp.html.setup {
 	on_attach = lspfmt.on_attach
 }
 lsp.eslint.setup {}
+lsp.phpactor.setup{}
+
+require("presence").setup({
+    neovim_image_text   = "At least it's not Electron.",
+    main_image          = "file",
+    editing_text        = "Creating bugs in %s"
+})
+
 vim.diagnostic.config {update_in_insert = true}
 
 vim.schedule(function()
