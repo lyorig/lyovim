@@ -33,8 +33,16 @@ require("lazy").setup({
 		"andweeb/presence.nvim"
   },
 
-  { import = "plugins" },
-}, lazy_config)
+  {
+	  "lervag/vimtex",
+	  lazy = false,     -- we don't want to lazy load VimTeX
+	  -- tag = "v2.15", -- uncomment to pin to a specific release
+	  init = function()
+		-- VimTeX configuration goes here, e.g.
+		vim.g.vimtex_view_method = "zathura"
+	  end
+  }
+})
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
@@ -48,18 +56,15 @@ lspfmt.setup {}
 local lsp = require "lspconfig"
 
 lsp.clangd.setup {on_attach = lspfmt.on_attach}
-lsp.rust_analyzer.setup {}
+lsp.cmake.setup {}
+lsp.rust_analyzer.setup {update_in_insert = true}
 lsp.pyright.setup {on_attach = lspfmt.on_attach, update_in_insert = true}
-lsp.html.setup {
-	on_attach = lspfmt.on_attach
-}
-lsp.eslint.setup {}
 lsp.phpactor.setup{}
 
 require("presence").setup({
     neovim_image_text   = "At least it's not Electron.",
     main_image          = "file",
-    editing_text        = "Creating bugs in %s"
+    editing_text        = "Committing war crimes in %s"
 })
 
 vim.diagnostic.config {update_in_insert = true}
@@ -74,3 +79,8 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = false
 
 vim.keymap.set("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>")
+vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
+vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end)
+vim.keymap.set("n", "ga", function() vim.lsp.buf.code_action() end)
+
+vim.g.vimtex_view_method = "skim"
