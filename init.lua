@@ -56,10 +56,13 @@ lspfmt.setup {}
 local lsp = require "lspconfig"
 
 lsp.clangd.setup {on_attach = lspfmt.on_attach}
-lsp.cmake.setup {}
 lsp.rust_analyzer.setup {update_in_insert = true}
 lsp.pyright.setup {on_attach = lspfmt.on_attach, update_in_insert = true}
-lsp.phpactor.setup{}
+lsp.phpactor.setup {
+  root_dir = function(_)
+    return vim.loop.cwd()
+  end
+}
 
 require("presence").setup({
     neovim_image_text   = "At least it's not Electron.",
@@ -77,10 +80,23 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = false
+vim.opt.wrap = false
 
 vim.keymap.set("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>")
 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
 vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end)
 vim.keymap.set("n", "ga", function() vim.lsp.buf.code_action() end)
 
-vim.g.vimtex_view_method = "skim"
+vim.g.rustfmt_autosave = 1
+
+if vim.g.neovide then
+	vim.g.neovide_position_animation_length = 0
+	vim.g.neovide_cursor_animation_length = 0.00
+	vim.g.neovide_cursor_trail_size = 0
+	vim.g.neovide_cursor_animate_in_insert_mode = false
+	vim.g.neovide_cursor_animate_command_line = false
+	vim.g.neovide_scroll_animation_far_lines = 0
+	vim.g.neovide_scroll_animation_length = 0.00
+
+	vim.o.guifont = "CodeNewRoman Nerd Font Mono:h16"
+end
