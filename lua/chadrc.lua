@@ -1,7 +1,5 @@
-local M = {}
-
-M.ui = {
-  theme = "bearded-arc",
+return {
+	base46 = {
+		theme = "chadracula-evondev",
+	},
 }
-
-return M
