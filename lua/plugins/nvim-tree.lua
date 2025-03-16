@@ -10,6 +10,7 @@ return {
 
 		nt.setup {
 			disable_netrw = true,
+			hijack_cursor = true,
 
 			filters = {
 				dotfiles = true,
