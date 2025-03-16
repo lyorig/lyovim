@@ -1,7 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 
-	lazy = false,
 	priority = 80, -- Because of conflicts with barbar.
 
 	config = function()
@@ -26,9 +25,11 @@ return {
 		vim.keymap.set("n", "<leader>e", ntapi.tree.open)
 		vim.keymap.set("n", "<leader>t", ntapi.tree.toggle)
 
-		-- Auto open
-		ntapi.tree.toggle {
-			focus = false,
-		}
+		-- Auto open & focus nvim-tree if we're not editing a single file.
+		if next(vim.fn.argv()) == nil then
+			ntapi.tree.toggle {
+				focus = false,
+			}
+		end
 	end,
 }

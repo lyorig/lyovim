@@ -5,7 +5,6 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 
-	lazy = false,
 	priority = 90, -- Because of conflicts with nvim-tree.
 
 	config = function()

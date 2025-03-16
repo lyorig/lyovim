@@ -24,9 +24,5 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup {
 	spec = { import = "plugins" },
 
-	defaults = {
-		lazy = true,
-	},
-
 	change_detection = { notify = false },
 }
