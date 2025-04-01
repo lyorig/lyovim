@@ -60,5 +60,7 @@ return {
 			virtual_lines = true,
 			virtual_text = true
 		}
+
+		vim.lsp.log.set_level(vim.log.levels.OFF);
 	end,
 }
