@@ -1,53 +1,64 @@
 return {
 	"neovim/nvim-lspconfig",
 
-	config = function()
-		local lsp = require "lspconfig"
+	dependencies = {
+		"saghen/blink.cmp",
+	},
 
-		lsp.clangd.setup {}
+	opts = {
+		servers = {
+			clangd = {},
+			rust_analyzer = {},
+			phpactor = {},
+			jdtls = {},
+			lua_ls = {
+				on_init = function(client)
+					if client.workspace_folders then
+						local path = client.workspace_folders[1].name
 
-		lsp.rust_analyzer.setup {}
-
-		lsp.phpactor.setup {}
-
-		lsp.jdtls.setup {}
-
-		lsp.lua_ls.setup {
-			on_init = function(client)
-				if client.workspace_folders then
-					local path = client.workspace_folders[1].name
-
-					if path ~= vim.fn.stdpath("config") and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")) then
-						return
+						if path ~= vim.fn.stdpath("config") and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")) then
+							return
+						end
 					end
-				end
 
-				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-					runtime = {
-						version = "LuaJIT"
-					},
+					client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+						runtime = {
+							version = "LuaJIT"
+						},
 
-					workspace = {
-						checkThirdParty = false,
+						workspace = {
+							checkThirdParty = false,
 
-						library = {
-							vim.env.VIMRUNTIME
+							library = {
+								vim.env.VIMRUNTIME
+							}
 						}
-					}
-				})
-			end,
+					})
+				end,
 
-			settings = {
-				Lua = {
-					telemetry = {
-						enable = false,
+				settings = {
+					Lua = {
+						telemetry = {
+							enable = false,
+						},
 					},
 				},
 			},
-		}
+		},
+	},
+
+	config = function(_, opts)
+		local lsp = require "lspconfig"
+		local blink = require "blink.cmp"
+
+		for server, config in pairs(opts.servers) do
+			config.capabilities = blink.get_lsp_capabilities(config.capabilities)
+			lsp[server].setup(config)
+		end
 
 		vim.diagnostic.config {
-			update_in_insert = true,
+			virtual_lines = true,
+			virtual_text = true
 		}
 	end,
 }

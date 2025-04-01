@@ -9,3 +9,7 @@ _Oh, isn't it always?_
 ## A keymap is taking way too long to execute!
 
 - Check whether there are other keymaps that "extend" the problematic one.
+
+## Rust is not showing diagnostic underlines!
+
+- `cargo clean`.
