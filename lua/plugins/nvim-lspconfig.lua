@@ -58,7 +58,7 @@ return {
 
 		vim.diagnostic.config {
 			virtual_lines = true,
-			virtual_text = true
+			virtual_text = false
 		}
 
 		vim.lsp.log.set_level(vim.log.levels.OFF);
