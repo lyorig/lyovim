@@ -40,10 +40,6 @@ return {
 				documentation = {
 					auto_show = true,
 					auto_show_delay_ms = 0,
-
-					window = {
-						border = "rounded",
-					},
 				},
 
 				ghost_text = {
@@ -51,8 +47,6 @@ return {
 				},
 
 				menu = {
-					border = "rounded",
-
 					max_height = 20,
 
 					draw = {
@@ -95,10 +89,6 @@ return {
 
 			signature = {
 				enabled = true,
-
-				window = {
-					border = "rounded",
-				},
 			},
 		}
 	end,
