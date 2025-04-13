@@ -18,4 +18,5 @@ set("v", "<leader>/", "gc");
 set("n", "<Esc>", "<cmd>noh<CR>");
 
 -- Diagnostic list
-set("n", "<leader>ds", "<cmd>Trouble diagnostics toggle<CR>")
+set("n", "<leader>d", "<cmd>Trouble diagnostics toggle focus=false<CR>");
+set("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>")
