@@ -20,3 +20,6 @@ set("n", "<Esc>", "<cmd>noh<CR>");
 -- Diagnostic list
 set("n", "<leader>d", "<cmd>Trouble diagnostics toggle focus=false<CR>");
 set("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>")
+
+-- Disable period key
+set("n", ".", "<Nop>");
