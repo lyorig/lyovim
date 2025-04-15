@@ -1,12 +1,14 @@
 return {
 	"saghen/blink.cmp",
 
+	version = "1.*",
+
 	dependencies = {
 		"L3MON4D3/LuaSnip",
 		"xzbdmw/colorful-menu.nvim",
 	},
 
-	build = "cargo +nightly build --release",
+	build = "cargo build -r",
 
 	config = function()
 		local cm = require "colorful-menu"
