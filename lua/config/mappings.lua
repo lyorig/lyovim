@@ -1,25 +1,27 @@
 -- Mappings:
 -- This file is for mappings that don't depend on a require.
 
-local set = vim.keymap.set
+function Set(type, keymap, action, what)
+	vim.keymap.set(type, keymap, action, { desc = what, remap = true })
+end
 
 -- LSP
-set("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>")
-set("n", "gd", vim.lsp.buf.definition)
-set("n", "gD", vim.lsp.buf.declaration)
-set("n", "ga", vim.lsp.buf.code_action)
-set("n", "<leader>r", vim.lsp.buf.rename)
+Set("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>", "LSP: clangd: Switch source/header")
+Set("n", "gd", vim.lsp.buf.definition, "LSP: Go to definition")
+Set("n", "gD", vim.lsp.buf.declaration, "LSP: Go to declaration")
+Set("n", "ga", vim.lsp.buf.code_action, "LSP: Code actions")
+Set("n", "<leader>r", vim.lsp.buf.rename, "LSP: Rename symbol")
 
 -- Comments
-set("n", "<leader>/", "gcc");
-set("v", "<leader>/", "gc");
+Set("n", "<leader>/", "gcc", "Comment out line");
+Set("v", "<leader>/", "gc", "Comment out selection");
 
 -- Clear highlights on Esc
-set("n", "<Esc>", "<cmd>noh<CR>");
+Set("n", "<Esc>", "<cmd>noh<CR>", "Clear highlights");
 
 -- Diagnostic list
-set("n", "<leader>d", "<cmd>Trouble diagnostics toggle focus=false<CR>");
-set("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>")
+Set("n", "<leader>d", "<cmd>Trouble diagnostics toggle focus=false<CR>", "Trouble: Open");
+Set("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>", "Trouble: Open with focus")
 
 -- Disable period key
-set("n", ".", "<Nop>");
+Set("n", ".", "<Nop>", "[disabled]");
