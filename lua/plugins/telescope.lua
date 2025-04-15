@@ -42,15 +42,15 @@ return {
 
 		tele.load_extension("gitmoji")
 
-		local set = vim.keymap.set
+		local map = require "util".map
 
-		set("n", "<leader>fg", tb.live_grep)
-		set("n", "<leader>ff", tb.find_files)
-		set("n", "<leader>fr", tb.lsp_references)
+		map("n", "<leader>fg", tb.live_grep, "Telescope: Live grep")
+		map("n", "<leader>ff", tb.find_files, "Telescope: Find files")
+		map("n", "<leader>fr", tb.lsp_references, "Telescope: LSP references")
 
-		set("n", "<leader>fc", tb.git_commits)
-		set("n", "<leader>fs", tb.git_status)
+		map("n", "<leader>fc", tb.git_commits, "Telescope: Git commits")
+		map("n", "<leader>fs", tb.git_status, "Telescope: Git status")
 
-		set("n", "<leader>gm", tele.extensions.gitmoji.gitmoji)
+		map("n", "<leader>gm", tele.extensions.gitmoji.gitmoji, "Telescope: Gitmoji")
 	end
 }

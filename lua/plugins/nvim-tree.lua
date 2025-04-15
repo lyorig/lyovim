@@ -21,11 +21,11 @@ return {
 			}
 		}
 
-		local set = vim.keymap.set
+		local map = require "util".map
 
 		-- Set keybinds
-		set("n", "<leader>e", ntapi.tree.open)
-		set("n", "<leader>t", ntapi.tree.toggle)
+		map("n", "<leader>e", ntapi.tree.open, "nvim-tree: Open")
+		map("n", "<leader>t", ntapi.tree.toggle, "nvim-tree: Toggle")
 
 		-- Auto open & focus nvim-tree if we're not editing a single file.
 		if next(vim.fn.argv()) == nil then

@@ -1,6 +1,6 @@
-function Toggle()
-	local cfg = vim.diagnostic.config().virtual_text
-	vim.diagnostic.config { virtual_text = not cfg, virtual_lines = cfg }
-end
+local map = require "util".map
 
-vim.keymap.set("n", "<leader>vt", Toggle, {})
+map("n", "<leader>vt", function()
+	local cfg = not not vim.diagnostic.config().virtual_text
+	vim.diagnostic.config { virtual_text = not cfg, virtual_lines = cfg }
+end, "LSP: Toggle virtual lines/text")

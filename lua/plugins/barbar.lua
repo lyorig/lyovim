@@ -20,9 +20,11 @@ return {
 			}
 		}
 
+		local map = require "util".map
+
 		-- Keybinds
-		vim.keymap.set("n", "<Tab>", "<cmd>BufferNext<CR>")
-		vim.keymap.set("n", "<S-Tab>", "<cmd>BufferPrev<CR>")
-		vim.keymap.set("n", "<leader>w", "<cmd>BufferClose<CR>")
+		map("n", "<Tab>", "<cmd>BufferNext<CR>", "Buffer: Next")
+		map("n", "<S-Tab>", "<cmd>BufferPrev<CR>", "Buffer: Previous")
+		map("n", "<leader>w", "<cmd>BufferClose<CR>", "Buffer: Close")
 	end
 }
