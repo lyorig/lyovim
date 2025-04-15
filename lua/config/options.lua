@@ -1,7 +1,7 @@
 -- General stuff
+-- "number" and "signcolumnt" are intentionally left out,
+-- as they're taken care of in autocmd.lua.
 vim.opt.termguicolors = true      -- 24-bit color support
-vim.opt.number = true             -- Show line number
-vim.opt.signcolumn = "yes"
 vim.opt.clipboard = "unnamedplus" -- Sync system clipboard
 vim.opt.showmode = false
 
