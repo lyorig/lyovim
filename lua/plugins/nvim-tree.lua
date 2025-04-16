@@ -23,9 +23,8 @@ return {
 
 		local map = require "util".map
 
-		-- Set keybinds
-		map("n", "<leader>e", ntapi.tree.open, "nvim-tree: Open")
-		map("n", "<leader>t", ntapi.tree.toggle, "nvim-tree: Toggle")
+		map("n", "<leader>E", ntapi.tree.open, "nvim-tree: Open")
+		map("n", "<leader>e", function() ntapi.tree.toggle { focus = false } end, "nvim-tree: Toggle")
 
 		-- Auto open & focus nvim-tree if we're not editing a single file.
 		if next(vim.fn.argv()) == nil then

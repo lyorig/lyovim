@@ -17,9 +17,5 @@ map("v", "<leader>/", "gc", "Comment out selection");
 -- Clear highlights on Esc
 map("n", "<Esc>", "<cmd>noh<CR>", "Clear highlights");
 
--- Diagnostic list
-map("n", "<leader>d", "<cmd>Trouble diagnostics toggle focus=false<CR>", "Trouble: Open");
-map("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>", "Trouble: Open with focus")
-
 -- Disable period key
 map("n", ".", "<Nop>", "[disabled]");
