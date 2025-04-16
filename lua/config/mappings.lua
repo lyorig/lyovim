@@ -19,3 +19,7 @@ map("n", "<Esc>", "<cmd>noh<CR>", "Clear highlights");
 
 -- Disable period key
 map("n", ".", "<Nop>", "[disabled]");
+
+-- ^$ remaps
+map("n", "f", "^", "Same as ^")
+map("n", "F", "$", "Same as $")
