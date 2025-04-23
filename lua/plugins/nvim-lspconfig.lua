@@ -9,7 +9,9 @@ return {
 		servers = {
 			clangd = {},
 			rust_analyzer = {},
-			phpactor = {},
+			phpactor = {
+				root_dir = "/Users/lyorig/Documents/Programming/Moodle",
+			},
 			jdtls = {},
 			lua_ls = {
 				on_init = function(client)

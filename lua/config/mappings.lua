@@ -21,5 +21,5 @@ map("n", "<Esc>", "<cmd>noh<CR>", "Clear highlights");
 map("n", ".", "<Nop>", "[disabled]");
 
 -- ^$ remaps
-map("n", "f", "^", "Same as ^")
-map("n", "F", "$", "Same as $")
+map({ "n", "v" }, "f", "^", "Same as ^")
+map({ "n", "v" }, "F", "$", "Same as $")
