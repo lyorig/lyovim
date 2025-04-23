@@ -23,3 +23,5 @@ map("n", ".", "<Nop>", "[disabled]");
 -- ^$ remaps
 map({ "n", "v" }, "f", "^", "Same as ^")
 map({ "n", "v" }, "F", "$", "Same as $")
+map("n", "<C-a>", "ggVG", "Select all")
+map({ "n", "v", "i" }, "<C-s>", "<cmd>w<CR>", "Write")
