@@ -1,3 +1,15 @@
+local function check_moodle_root_dir()
+	local res = vim.fn.getcwd()
+	local i, j = res:find("Moodle", 0, true);
+
+	-- Not in Moodle or its subdirs.
+	if i == nil then
+		return
+	end
+
+	return res:sub(0, j)
+end
+
 return {
 	"neovim/nvim-lspconfig",
 
@@ -10,7 +22,7 @@ return {
 			clangd = {},
 			rust_analyzer = {},
 			phpactor = {
-				root_dir = "/Users/lyorig/Documents/Programming/Moodle",
+				root_dir = check_moodle_root_dir()
 			},
 			jdtls = {},
 			lua_ls = {
