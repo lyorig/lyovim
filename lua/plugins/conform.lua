@@ -2,8 +2,7 @@ return {
 	"stevearc/conform.nvim",
 
 	opts = {
-		format_on_save = {
-			timeout_ms = 500,
+		format_after_save = {
 			lsp_format = "fallback",
 		},
 	},
