@@ -13,62 +13,50 @@ end
 return {
 	"neovim/nvim-lspconfig",
 
-	dependencies = {
-		"saghen/blink.cmp",
-	},
+	config = function(_, opts)
+		local lsp = require "lspconfig"
 
-	opts = {
-		servers = {
-			clangd = {},
-			rust_analyzer = {},
-			phpactor = {
-				root_dir = check_moodle_root_dir()
-			},
-			jdtls = {},
-			lua_ls = {
-				on_init = function(client)
-					if client.workspace_folders then
-						local path = client.workspace_folders[1].name
+		lsp.clangd.setup {}
+		lsp.rust_analyzer.setup {}
+		lsp.jdtls.setup {}
 
-						if path ~= vim.fn.stdpath("config") and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")) then
-							return
-						end
+		lsp.phpactor.setup {
+			root_dir = check_moodle_root_dir(),
+		}
+
+		lsp.lua_ls.setup {
+			on_init = function(client)
+				if client.workspace_folders then
+					local path = client.workspace_folders[1].name
+
+					if path ~= vim.fn.stdpath("config") and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")) then
+						return
 					end
+				end
 
-					client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-						runtime = {
-							version = "LuaJIT"
-						},
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						version = "LuaJIT"
+					},
 
-						workspace = {
-							checkThirdParty = false,
+					workspace = {
+						checkThirdParty = false,
 
-							library = {
-								vim.env.VIMRUNTIME
-							}
+						library = {
+							vim.env.VIMRUNTIME
 						}
-					})
-				end,
+					}
+				})
+			end,
 
-				settings = {
-					Lua = {
-						telemetry = {
-							enable = false,
-						},
+			settings = {
+				Lua = {
+					telemetry = {
+						enable = false,
 					},
 				},
 			},
-		},
-	},
-
-	config = function(_, opts)
-		local lsp = require "lspconfig"
-		local blink = require "blink.cmp"
-
-		for server, config in pairs(opts.servers) do
-			config.capabilities = blink.get_lsp_capabilities(config.capabilities)
-			lsp[server].setup(config)
-		end
+		}
 
 		vim.diagnostic.config {
 			virtual_lines = false,
