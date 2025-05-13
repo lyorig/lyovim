@@ -18,7 +18,11 @@ return {
 
 			renderer = {
 				root_folder_label = false,
-			}
+			},
+
+			view = {
+				adaptive_size = true,
+			},
 		}
 
 		local map = require "util".map
