@@ -11,3 +11,5 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = false
 vim.opt.winborder = "rounded"
+
+vim.cmd [[highlight WinSeparator guifg=cyan]]
