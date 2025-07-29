@@ -61,10 +61,11 @@ return {
 		vim.diagnostic.config {
 			virtual_lines = false,
 			virtual_text = true,
-			
+
 			update_in_insert = true,
 		}
 
 		vim.lsp.log.set_level(vim.log.levels.OFF);
+		vim.lsp.enable("ts_ls")
 	end,
 }
