@@ -52,5 +52,6 @@ return {
 		map("n", "<leader>fs", tb.git_status, "Telescope: Git status")
 
 		map("n", "<leader>gm", tele.extensions.gitmoji.gitmoji, "Telescope: Gitmoji")
+		map("n", "<leader>gr", tb.resume, "Telescope: Result last search");
 	end
 }
