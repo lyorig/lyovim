@@ -4,7 +4,7 @@
 local map = require "util".map
 
 -- LSP
-map("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>", "LSP: clangd: Switch source/header")
+map("n", "<leader>s", "<cmd>ClangdSwitchSourceHeader<cr>", "LSP: clangd: Switch source/header")
 map("n", "gd", vim.lsp.buf.definition, "LSP: Go to definition")
 map("n", "gD", vim.lsp.buf.declaration, "LSP: Go to declaration")
 map("n", "ga", vim.lsp.buf.code_action, "LSP: Code actions")
