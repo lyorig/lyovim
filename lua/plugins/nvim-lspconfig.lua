@@ -1,71 +1,76 @@
 local function check_moodle_root_dir()
-	local res = vim.fn.getcwd()
-	local i, j = res:find("Moodle", 0, true);
+    local res = vim.fn.getcwd()
+    local i, j = res:find("Moodle", 0, true);
 
-	-- Not in Moodle or its subdirs.
-	if i == nil then
-		return
-	end
+    -- Not in Moodle or its subdirs.
+    if i == nil then
+        return
+    end
 
-	return res:sub(0, j)
+    return res:sub(0, j)
 end
 
+local foo = check_moodle_root_dir();
+
 return {
-	"neovim/nvim-lspconfig",
+    "neovim/nvim-lspconfig",
 
-	config = function(_, opts)
-		local lsp = require "lspconfig"
+    config = function(_, opts)
+        local lsp = require "lspconfig"
 
-		lsp.clangd.setup {}
-		lsp.rust_analyzer.setup {}
-		lsp.jdtls.setup {}
+        lsp.clangd.setup {}
+        lsp.rust_analyzer.setup {}
+        lsp.jdtls.setup {}
 
-		lsp.phpactor.setup {
-			root_dir = check_moodle_root_dir(),
-		}
+        lsp.phpactor.setup {
+            root_dir = foo,
+        }
 
-		lsp.lua_ls.setup {
-			on_init = function(client)
-				if client.workspace_folders then
-					local path = client.workspace_folders[1].name
+        lsp.lua_ls.setup {
+            on_init = function(client)
+                if client.workspace_folders then
+                    local path = client.workspace_folders[1].name
 
-					if path ~= vim.fn.stdpath("config") and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")) then
-						return
-					end
-				end
+                    if path ~= vim.fn.stdpath("config") and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")) then
+                        return
+                    end
+                end
 
-				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-					runtime = {
-						version = "LuaJIT"
-					},
+                client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+                    runtime = {
+                        version = "LuaJIT"
+                    },
 
-					workspace = {
-						checkThirdParty = false,
+                    workspace = {
+                        checkThirdParty = false,
 
-						library = {
-							vim.env.VIMRUNTIME
-						}
-					}
-				})
-			end,
+                        library = {
+                            vim.env.VIMRUNTIME
+                        }
+                    }
+                })
+            end,
 
-			settings = {
-				Lua = {
-					telemetry = {
-						enable = false,
-					},
-				},
-			},
-		}
+            settings = {
+                Lua = {
+                    telemetry = {
+                        enable = false,
+                    },
+                },
+            },
+        }
 
-		vim.diagnostic.config {
-			virtual_lines = false,
-			virtual_text = true,
+        lsp.ts_ls.setup {
+            root_dir = foo,
+        }
 
-			update_in_insert = true,
-		}
+        vim.diagnostic.config {
+            virtual_lines = false,
+            virtual_text = true,
 
-		vim.lsp.log.set_level(vim.log.levels.OFF);
-		vim.lsp.enable("ts_ls")
-	end,
+            update_in_insert = true,
+        }
+
+        vim.lsp.log.set_level(vim.log.levels.OFF);
+    end,
 }
