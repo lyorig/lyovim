@@ -19,6 +19,7 @@ return {
         local lsp = require "lspconfig"
 
         lsp.clangd.setup {}
+        lsp.neocmake.setup {}
         lsp.rust_analyzer.setup {}
         lsp.jdtls.setup {}
 
