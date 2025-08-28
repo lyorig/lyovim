@@ -72,6 +72,6 @@ return {
             update_in_insert = true,
         }
 
-        vim.lsp.log.set_level(vim.log.levels.OFF);
+        vim.lsp.set_log_level(vim.log.levels.OFF)
     end,
 }
