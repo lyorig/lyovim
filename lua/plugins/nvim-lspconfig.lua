@@ -72,6 +72,8 @@ return {
             update_in_insert = true,
         }
 
+        vim.lsp.enable("qmlls")
+
         vim.lsp.set_log_level(vim.log.levels.OFF)
     end,
 }
