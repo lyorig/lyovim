@@ -3,5 +3,10 @@ return {
 
     dependencies = { "nvim-lua/plenary.nvim" },
 
-    opts = {}
+    opts = {
+        highlight = {
+            keyword = "bg",
+            pattern = [[(KEYWORDS)]],
+        }
+    }
 }
