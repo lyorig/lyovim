@@ -38,6 +38,13 @@ return {
                     initial_mode = "insert",
                 },
             },
+
+            pickers = {
+                colorscheme = {
+                    enable_preview = true,
+                    ignore_builtins = true
+                }
+            }
         }
 
         tele.load_extension("gitmoji")
@@ -47,6 +54,7 @@ return {
         map("n", "<leader>rg", tb.live_grep, "Telescope: ripgrep")
         map("n", "<leader>ff", tb.find_files, "Telescope: Files")
         map("n", "<leader>fr", tb.lsp_references, "Telescope: LSP references")
+        map("n", "<leader>cs", tb.colorscheme, "Telescope: Colorschemes")
 
         map("n", "<leader>gc", tb.git_commits, "Telescope: Git commits")
         map("n", "<leader>gs", tb.git_status, "Telescope: Git status")

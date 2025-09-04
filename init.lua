@@ -13,3 +13,5 @@ vim.filetype.add({
         qrc = "xml"
     }
 })
+
+vim.cmd [[colorscheme everforest]]
