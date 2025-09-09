@@ -51,7 +51,7 @@ return {
 
         local map = require "util".map
 
-        map("n", "<leader>rg", tb.live_grep, "Telescope: ripgrep")
+        map("n", "<leader>lg", tb.live_grep, "Telescope: Live grep")
         map("n", "<leader>ff", tb.find_files, "Telescope: Files")
         map("n", "<leader>fr", tb.lsp_references, "Telescope: LSP references")
         map("n", "<leader>cs", tb.colorscheme, "Telescope: Colorschemes")
