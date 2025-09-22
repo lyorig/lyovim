@@ -3,6 +3,10 @@
 
 local map = require "util".map
 
+local function toggle_wrap()
+	vim.wo.wrap = not vim.wo.wrap
+end
+
 -- LSP
 map("n", "<leader>s", "<cmd>ClangdSwitchSourceHeader<cr>", "LSP: clangd: Switch source/header")
 map("n", "gd", vim.lsp.buf.definition, "LSP: Go to definition")
@@ -26,3 +30,4 @@ map({ "n", "v" }, "F", "$", "Same as $")
 map("n", "<C-a>", "ggVG", "Select all")
 map({ "n", "v", "i" }, "<C-s>", "<cmd>w<CR>", "Write")
 map("n", "<leader>i", vim.show_pos, "Shorthand for :Inspect")
+map("n", "<leader>n", toggle_wrap, "Toggle wrap")
