@@ -6,7 +6,6 @@ return {
     opts = {
         highlight = {
             keyword = "bg",
-            pattern = [[(KEYWORDS:)]],
         }
     }
 }

@@ -1,3 +1,4 @@
+require "config.lsp"
 require "config.lazy"
 require "config.mappings"
 require "config.options"
@@ -14,4 +15,4 @@ vim.filetype.add({
     }
 })
 
-vim.cmd [[colorscheme everforest]]
+vim.cmd [[colorscheme catppuccin]]
