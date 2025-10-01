@@ -4,11 +4,11 @@
 local map = require "util".map
 
 local function toggle_wrap()
-	vim.wo.wrap = not vim.wo.wrap
+    vim.wo.wrap = not vim.wo.wrap
 end
 
 -- LSP
-map("n", "<leader>s", "<cmd>ClangdSwitchSourceHeader<cr>", "LSP: clangd: Switch source/header")
+map("n", "<leader>s", "<cmd>LspClangdSwitchSourceHeader<cr>", "LSP: clangd: Switch source/header")
 map("n", "gd", vim.lsp.buf.definition, "LSP: Go to definition")
 map("n", "gD", vim.lsp.buf.declaration, "LSP: Go to declaration")
 map("n", "ga", vim.lsp.buf.code_action, "LSP: Code actions")
