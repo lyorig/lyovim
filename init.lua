@@ -6,13 +6,13 @@ require "config.commands"
 require "config.autocmd"
 
 if vim.g.neovide then
-    require "config.neovide"
+	require "config.neovide"
 end
 
 vim.filetype.add({
-    extension = {
-        qrc = "xml"
-    }
+	extension = {
+		qrc = "xml"
+	}
 })
 
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme everforest]]
