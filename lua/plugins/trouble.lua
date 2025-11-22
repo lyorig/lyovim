@@ -10,10 +10,6 @@ return {
 			warn_no_results = false,
 
 			follow = false,
-
-			win = {
-				relative = "win",
-			},
 		}
 
 		local map = require "util".map
