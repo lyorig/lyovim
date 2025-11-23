@@ -7,7 +7,7 @@ return {
 		local od = require "onedark";
 
 		od.setup {
-			style = "dark",
+			style = "deep",
 
 			toggle_style_key = "<leader>od",
 			toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', },
