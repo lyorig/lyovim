@@ -26,7 +26,6 @@ cfg("jdtls")
 cfg("phpactor")
 cfg("ts_ls")
 cfg("qmlls")
-cfg("zls")
 cfg("lua_ls", {
 	on_init = function(client)
 		if client.workspace_folders then
