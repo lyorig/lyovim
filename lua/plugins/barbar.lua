@@ -26,5 +26,6 @@ return {
 		map("n", "<Tab>", "<cmd>BufferNext<CR>", "Buffer: Next")
 		map("n", "<S-Tab>", "<cmd>BufferPrev<CR>", "Buffer: Previous")
 		map("n", "<leader>w", "<cmd>BufferClose<CR>", "Buffer: Close")
+		map("n", "<leader>W", "<cmd>BufferCloseAllButCurrent<CR>", "Buffer: Close")
 	end
 }
