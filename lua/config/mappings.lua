@@ -32,3 +32,6 @@ map("n", "<C-a>", "ggVG", "Select all")
 map({ "n", "v", "i" }, "<C-s>", "<cmd>w<CR>", "Write")
 map("n", "<leader>i", vim.show_pos, "Shorthand for :Inspect")
 map("n", "<leader>n", toggle_wrap, "Toggle wrap")
+
+-- Terminal
+map("t", "<Esc>", "<C-\\><C-N>", "Exit terminal mode");
