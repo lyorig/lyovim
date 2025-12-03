@@ -11,7 +11,8 @@ end
 
 vim.filetype.add({
 	extension = {
-		qrc = "xml"
+		qrc = "xml",
+		mustache = "html"
 	}
 })
 
